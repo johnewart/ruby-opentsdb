@@ -1,3 +1,4 @@
+require 'socket'
 require 'opentsdb/logging'
 
 module OpenTSDB
@@ -7,7 +8,13 @@ module OpenTSDB
     attr_reader :connection
 
     def initialize(options = {})
-      @connection = {}
+      begin
+        hostname = options[:hostname] || 'localhost'
+        port = options[:port] || 4242
+        @connection = TCPSocket.new(hostname, port)
+      rescue
+        raise "Unable to connect or invalid connection data"
+      end
     end
 
     def put(options = {})
