@@ -1,8 +1,8 @@
 require 'spec_helper.rb'
 
-describe OpenTSDB::client do
+describe OpenTSDB::Client do
   before :each do 
-    @client = OpenTSDB::client.new
+    @client = OpenTSDB::Client.new
   end
   
   it "should create a new client" do  
