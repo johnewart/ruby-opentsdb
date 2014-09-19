@@ -17,31 +17,24 @@ module OpenTSDB
       end
     end
 
-    def self.to_command( options )
-
+    def to_command( options )
       timestamp = options[:timestamp].to_i
       metric_name = options[:metric]
       value = options[:value].to_f
       tags = options[:tags].map{|k,v| "#{k}=#{v}"}.join(" ")
-      return "put #{metric_name} #{timestamp} #{value} #{tags}"
+      "put #{metric_name} #{timestamp} #{value} #{tags}"
     end
 
-    def self.build_command( input ) 
-      command = ""
+    def build_command(input) 
       if input.kind_of?(Array)
-        input.each do |unit|
-          command += to_command( unit ) + "\n"
-        end
+        input.collect { |unit| to_command(unit) }.join("\n")
       else
-        command = to_command input
-      end
-      return command.chomp
-
+        to_command(input)
+      end.chomp
     end
 
     def put(options = {})
-      command = self.class.build_command options
-      @connection.puts(command)
+      @connection.puts(build_command(options))
     end
   end
 end
