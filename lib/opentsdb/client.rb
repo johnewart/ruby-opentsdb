@@ -12,7 +12,7 @@ module OpenTSDB
       port        = options[:port] || 4242
       @connection = TCPSocket.new(hostname, port)
     rescue
-      raise "Unable to connect or invalid connection data"
+      raise Errors::UnableToConnectError
     end
 
     def to_command(options)

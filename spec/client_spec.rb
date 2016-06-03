@@ -8,6 +8,16 @@ describe OpenTSDB::Client do
     allow(TCPSocket).to receive(:new).and_return(socket)
   end
 
+  describe 'error handling' do
+    subject { described_class.new }
+
+    it 'raises a custom error if the connection failed' do
+      expect(TCPSocket).to receive(:new).and_raise('connection error')
+
+      expect { subject }.to raise_error(OpenTSDB::Errors::UnableToConnectError)
+    end
+  end
+
   it 'creates a new client' do
     expect { client }.to_not raise_error
   end
