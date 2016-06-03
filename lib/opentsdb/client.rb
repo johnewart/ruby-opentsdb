@@ -8,25 +8,24 @@ module OpenTSDB
     attr_reader :connection
 
     def initialize(options = {})
-      begin
-        hostname = options[:hostname] || 'localhost'
-        port = options[:port] || 4242
-        @connection = TCPSocket.new(hostname, port)
-      rescue
-        raise "Unable to connect or invalid connection data"
-      end
+      hostname    = options[:hostname] || 'localhost'
+      port        = options[:port] || 4242
+      @connection = TCPSocket.new(hostname, port)
+    rescue
+      raise "Unable to connect or invalid connection data"
     end
 
-    def to_command( options )
-      timestamp = options[:timestamp].to_i
+    def to_command(options)
+      timestamp   = options[:timestamp].to_i
       metric_name = options[:metric]
-      value = options[:value].to_f
-      tags = options[:tags].map{|k,v| "#{k}=#{v}"}.join(" ")
+      value       = options[:value].to_f
+      tags        = options[:tags].map { |k, v| "#{k}=#{v}" }.join(' ')
+
       "put #{metric_name} #{timestamp} #{value} #{tags}"
     end
 
-    def build_command(input) 
-      if input.kind_of?(Array)
+    def build_command(input)
+      if input.is_a?(Array)
         input.collect { |unit| to_command(unit) }.join("\n")
       else
         to_command(input)
