@@ -12,4 +12,5 @@ module OpenTSDB
   end
 end
 
+require 'opentsdb/errors'
 require 'opentsdb/client'
