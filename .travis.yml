@@ -1,8 +1,13 @@
 before_install:
-  - gem install bundler
-
+- gem install bundler
 language: ruby
 rvm:
- - 1.9.3
- - 2.0
- - 2.1
+- 1.9.3
+- 2.0
+- 2.1
+deploy:
+  provider: rubygems
+  api_key:
+    secure: c/2n2sHe7gba+OqBrH5YKxWFJ1klbOW5LRT67oIPnYBChRpdpzAx7CNFgpzXu3TQ77LbY0WChKAai4exvM4E752vj41r3Xdrk0xPAfUY/y51szexDLk9mT1s7VdXCCmPr+Y1e5eV9VZxK+heJyy4gejPsgStNS8qgua+859Xpz4=
+  on:
+    branch: master
