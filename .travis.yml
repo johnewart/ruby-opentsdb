@@ -9,6 +9,6 @@ deploy:
   provider: rubygems
   gem: opentsdb
   api_key:
-    secure: c/2n2sHe7gba+OqBrH5YKxWFJ1klbOW5LRT67oIPnYBChRpdpzAx7CNFgpzXu3TQ77LbY0WChKAai4exvM4E752vj41r3Xdrk0xPAfUY/y51szexDLk9mT1s7VdXCCmPr+Y1e5eV9VZxK+heJyy4gejPsgStNS8qgua+859Xpz4=
+    secure: "aH9rBIqZlR7QDxZB+hzayULMsYGcGEmwfIQ6L1hrZeluN2OTBrbuci7+ztSCWqzYEnT7M40TLrWHgmOOeEwg2blaKcArwAxB/s4HZvJR8oOPSu0TZ8qYQmr2InRfYDZCe5b9OV40XI+bqn2OHi+VfHN8HFWwQ6BCCZSSpZemVaQ="
   on:
     branch: master
