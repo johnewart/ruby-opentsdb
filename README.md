@@ -1,5 +1,7 @@
 # OpenTSDB Ruby client
 
+## Stuff
+
 ## What is this?
 
 This is a Ruby client for simplifying interactions with OpenTSDB.
