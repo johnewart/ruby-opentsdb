@@ -1,0 +1,26 @@
+dependencies:
+  build:
+    - ruby:2.4.5
+
+build_targets:
+  - name: test
+    commands:
+      - gem install bundler
+      - bundle install 
+      - bundle exec rake
+
+  - name: release
+    build_first: test
+    commands:
+      - echo "RELEASE ZE KRAKEN"
+
+ci:
+  builds:
+    - name: run_tests
+      build_target: test
+
+    - name: do_release
+      build_target: release
+      conditions:
+        branch:
+          tag: true
