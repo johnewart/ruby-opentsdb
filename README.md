@@ -1,6 +1,4 @@
 # OpenTSDB Ruby client
-[![Build
-Status](https://travis-ci.org/johnewart/ruby-opentsdb.svg?branch=master)](https://travis-ci.org/johnewart/ruby-opentsdb)
 
 ## What is this?
 
