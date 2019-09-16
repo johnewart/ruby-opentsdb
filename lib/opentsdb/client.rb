@@ -16,6 +16,10 @@ module OpenTSDB
     end
 
     def to_command(options)
+      if !options.key?(:tags) || !options[:tags].is_a?(Hash) || options[:tags].empty?
+        fail OpenTSDB::Errors::InvalidTagsError
+      end
+
       timestamp   = options[:timestamp].to_i
       metric_name = options[:metric]
       value       = options[:value].to_f

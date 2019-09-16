@@ -28,7 +28,11 @@ ruby 1.9.3+
     tags: { factor: 'awesome', host: 'ponies' }
   }
 
+  # Query one metric
   @client.put(sample)
+
+  # Query many metrics
+  @client.put([sample, sample])
 ```
 
 ## License
